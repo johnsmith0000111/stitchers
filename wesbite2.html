@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StitchCraft Digitizing Studio — Professional Embroidery Digitizing</title>
+  <meta name="description" content="Professional embroidery digitizing services: logo digitizing, custom designs, patches, cap digitizing. 12-24 hour turnaround. Trusted by 5,000+ brands." />
+  <meta name="keywords" content="embroidery digitizing, logo digitizing, custom embroidery, patch digitizing, embroidery files, DST files" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== CSS Variables / Theme ===== */
+    :root {
+      --maroon-50: #fdf2f5;
+      --maroon-100: #fce7ed;
+      --maroon-200: #f9d0dc;
+      --maroon-300: #f4a9be;
+      --maroon-400: #ec7498;
+      --maroon-500: #e04a76;
+      --maroon-600: #cc2a58;
+      --maroon-700: #a81e47;
+      --maroon-800: #8b1d3e;
+      --maroon-900: #761c39;
+      --maroon-950: #420a1d;
+
+      --gold-50: #fdfbeb;
+      --gold-100: #faf5c8;
+      --gold-200: #f5e98f;
+      --gold-300: #efd455;
+      --gold-400: #e8c02a;
+      --gold-500: #d4a017;
+      --gold-600: #b87d11;
+      --gold-700: #935a12;
+      --gold-800: #794817;
+      --gold-900: #673c18;
+      --gold-950: #3c1f09;
+
+      --forest-300: #86efac;
+      --forest-400: #4ade80;
+      --forest-700: #15803d;
+      --forest-900: #14532d;
+
+      --cream-50: #fdfcf8;
+      --cream-100: #fbf8f1;
+      --cream-200: #f5eedc;
+      --cream-300: #ede0c4;
+      --cream-400: #e0cda2;
+      --cream-500: #cfb77a;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      background-color: var(--cream-50);
+      color: #2d2d2d;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1, h2, h3, h4, .font-display { font-family: var(--font-display); }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    input, textarea, select { font-family: inherit; }
+
+    /* ===== Custom Scrollbar ===== */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--maroon-800); border-radius: 4px; }
+
+    /* ===== Animations ===== */
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(212, 160, 23, 0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(212, 160, 23, 0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .gold-shimmer {
+      background: linear-gradient(90deg, #d4a017 0%, #f5e98f 50%, #d4a017 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
+    .btn-pulse { animation: pulse-gold 2s infinite; }
+    .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+    /* ===== Utility Classes ===== */
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--maroon-800), var(--gold-500));
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(139, 29, 62, 0.15); }
+
+    .gallery-item { position: relative; overflow: hidden; }
+    .gallery-item .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(66, 10, 29, 0.85) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.3s ease; border-radius: 12px;
+    }
+    .gallery-item:hover .overlay { opacity: 1; }
+    .gallery-item img { transition: transform 0.5s ease; }
+    .gallery-item:hover img { transform: scale(1.08); }
+
+    .testimonial-card {
+      background: linear-gradient(135deg, var(--cream-50) 0%, var(--cream-200) 100%);
+      border: 1px solid rgba(212, 160, 23, 0.2);
+    }
+
+    .stitch-bg {
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238b1d3e' fill-opacity='0.04'%3E%3Cpath d='M20 0 L22 18 L20 20 L18 18 Z'/%3E%3Cpath d='M40 20 L22 22 L20 20 L22 18 Z'/%3E%3Cpath d='M20 40 L18 22 L20 20 L22 22 Z'/%3E%3Cpath d='M0 20 L18 18 L20 20 L18 22 Z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #8b1d3e 0%, #420a1d 50%, #2d2d2d 100%);
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--maroon-800) !important;
+      box-shadow: 0 0 0 3px rgba(139, 29, 62, 0.1);
+    }
+
+    /* ===== Layout Helpers ===== */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+    @media (min-width: 640px) { .container { padding: 0 1.5rem; } }
+    @media (min-width: 1024px) { .container { padding: 0 2rem; } }
+
+    /* ================================================================ */
+    /*  HEADER                                                          */
+    /* ================================================================ */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      border-bottom: 1px solid var(--cream-200);
+    }
+    .header-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 1rem; display: flex;
+      align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    @media (min-width: 640px) { .header-inner { padding: 0 1.5rem; } }
+    @media (min-width: 1024px) { .header-inner { padding: 0 2rem; } }
+
+    .logo-link { display: flex; align-items: center; gap: 12px; }
+    .logo-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--maroon-800), var(--maroon-950));
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .logo-icon span { color: var(--gold-300); font-size: 18px; font-weight: 700; line-height: 1; }
+    .logo-text-main { font-family: var(--font-display); font-weight: 700; color: var(--maroon-900); font-size: 18px; line-height: 1; }
+    .logo-text-sub { font-size: 11px; color: var(--gold-600); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .desktop-nav { display: none; align-items: center; gap: 4px; }
+    @media (min-width: 768px) { .desktop-nav { display: flex; } }
+    .nav-link {
+      padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 500;
+      color: #4b5563; transition: all 0.2s;
+    }
+    .nav-link:hover, .nav-link.active { background: var(--maroon-50); color: var(--maroon-800); }
+
+    .header-cta { display: none; align-items: center; gap: 12px; }
+    @media (min-width: 768px) { .header-cta { display: flex; } }
+    .login-link { font-size: 14px; font-weight: 500; color: var(--maroon-800); transition: color 0.2s; }
+    .login-link:hover { color: var(--maroon-900); }
+    .order-btn {
+      background: var(--maroon-800); color: white; font-size: 14px; font-weight: 600;
+      padding: 10px 20px; border-radius: 8px; transition: all 0.2s;
+    }
+    .order-btn:hover { background: var(--maroon-900); box-shadow: 0 10px 25px rgba(139,29,62,0.2); }
+
+    /* Mobile menu */
+    .mobile-toggle { display: block; padding: 8px; border-radius: 8px; color: #4b5563; }
+    .mobile-toggle:hover { background: #f3f4f6; }
+    @media (min-width: 768px) { .mobile-toggle { display: none; } }
+    .mobile-nav {
+      display: none; border-top: 1px solid var(--cream-200);
+      background: white; padding: 16px;
+    }
+    .mobile-nav.open { display: block; }
+    @media (min-width: 768px) { .mobile-nav { display: none !important; } }
+    .mobile-nav a {
+      display: block; padding: 12px 16px; border-radius: 8px;
+      font-size: 14px; font-weight: 500; color: #374151; transition: all 0.2s;
+    }
+    .mobile-nav a:hover { background: var(--maroon-50); color: var(--maroon-800); }
+    .mobile-nav-divider { padding-top: 8px; margin-top: 8px; border-top: 1px solid var(--cream-200); }
+    .mobile-order-btn {
+      display: block; width: 100%; text-align: center;
+      background: var(--maroon-800); color: white; font-size: 14px; font-weight: 600;
+      padding: 12px 20px; border-radius: 8px; transition: background 0.2s;
+    }
+    .mobile-order-btn:hover { background: var(--maroon-900); }
+
+    /* ================================================================ */
+    /*  HERO SECTION                                                    */
+    /* ================================================================ */
+    .hero { position: relative; overflow: hidden; color: white; }
+    .hero-bg-img {
+      position: absolute; inset: 0; opacity: 0.15;
+      background-size: cover; background-position: center;
+      background-image: url('https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=1600&fit=crop');
+    }
+    .hero-gradient-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent, rgba(66,10,29,0.6));
+    }
+    .hero-content {
+      position: relative; max-width: 1280px; margin: 0 auto;
+      padding: 96px 1rem;
+    }
+    @media (min-width: 640px) { .hero-content { padding: 96px 1.5rem; } }
+    @media (min-width: 768px) { .hero-content { padding: 128px 1.5rem; } }
+    @media (min-width: 1024px) { .hero-content { padding: 128px 2rem; } }
+    .hero-inner { max-width: 768px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 9999px;
+      padding: 6px 16px; font-size: 14px; font-weight: 500;
+      color: var(--gold-300); margin-bottom: 24px;
+    }
+    .pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--forest-400); animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 3rem; line-height: 1.1; margin-bottom: 24px;
+    }
+    @media (min-width: 768px) { .hero h1 { font-size: 3.75rem; } }
+    @media (min-width: 1024px) { .hero h1 { font-size: 4.5rem; } }
+
+    .hero-desc {
+      font-size: 1.125rem; color: rgba(255,255,255,0.8);
+      line-height: 1.7; margin-bottom: 40px; max-width: 672px;
+    }
+    @media (min-width: 768px) { .hero-desc { font-size: 1.25rem; } }
+
+    .hero-buttons { display: flex; flex-direction: column; gap: 16px; }
+    @media (min-width: 640px) { .hero-buttons { flex-direction: row; } }
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--gold-500); color: var(--maroon-950); font-weight: 700;
+      padding: 16px 32px; border-radius: 12px; font-size: 18px; transition: all 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-400); box-shadow: 0 20px 40px rgba(212,160,23,0.3); transform: translateY(-2px); }
+    .btn-secondary-hero {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
+      color: white; font-weight: 600; padding: 16px 32px; border-radius: 12px;
+      font-size: 18px; transition: all 0.2s; backdrop-filter: blur(8px);
+    }
+    .btn-secondary-hero:hover { background: rgba(255,255,255,0.2); }
+
+    /* Stats bar */
+    .stats-bar {
+      position: relative; border-top: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05); backdrop-filter: blur(8px);
+    }
+    .stats-inner {
+      max-width: 1280px; margin: 0 auto; padding: 24px 1rem;
+    }
+    @media (min-width: 640px) { .stats-inner { padding: 24px 1.5rem; } }
+    @media (min-width: 1024px) { .stats-inner { padding: 24px 2rem; } }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    }
+    @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+    .stat-item { text-align: center; }
+    .stat-value { font-family: var(--font-display); font-size: 1.875rem; font-weight: 700; color: var(--gold-400); }
+    .stat-label { color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 4px; }
+
+    /* ================================================================ */
+    /*  SERVICES SECTION                                                */
+    /* ================================================================ */
+    .services-section { padding: 80px 0; background: var(--cream-100); }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-tag { color: var(--gold-600); font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+    .section-title { font-family: var(--font-display); font-size: 2.25rem; font-weight: 700; color: var(--maroon-900); margin-top: 8px; }
+    .section-desc { color: #4b5563; max-width: 672px; margin: 0 auto; margin-top: 8px; }
+
+    .services-grid {
+      display: grid; grid-template-columns: 1fr; gap: 24px;
+    }
+    @media (min-width: 640px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .service-card {
+      background: white; border-radius: 16px; padding: 28px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid var(--cream-200);
+    }
+    .service-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--maroon-50); display: flex; align-items: center; justify-content: center;
+      color: var(--maroon-700); font-size: 24px; margin-bottom: 16px;
+    }
+    .service-card h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--maroon-900); margin-bottom: 8px; }
+    .service-card p { color: #6b7280; font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+    .service-footer { display: flex; align-items: center; justify-content: space-between; }
+    .service-price { color: var(--maroon-800); font-weight: 700; }
+    .service-link { color: var(--gold-600); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .service-link:hover { color: var(--gold-700); }
+
+    .section-cta { text-align: center; margin-top: 40px; }
+    .btn-maroon {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--maroon-800); color: white; font-weight: 600;
+      padding: 14px 32px; border-radius: 12px; transition: all 0.2s;
+    }
+    .btn-maroon:hover { background: var(--maroon-900); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+
+    /* ================================================================ */
+    /*  HOW IT WORKS                                                    */
+    /* ================================================================ */
+    .how-section { padding: 80px 0; background: white; }
+    .steps-grid {
+      display: grid; grid-template-columns: 1fr; gap: 32px;
+    }
+    @media (min-width: 768px) { .steps-grid { grid-template-columns: repeat(4, 1fr); } }
+    .step { position: relative; text-align: center; }
+    .step-connector {
+      display: none; position: absolute; top: 32px; left: 60%; width: 100%; height: 2px;
+      background: linear-gradient(to right, var(--maroon-200), var(--cream-300));
+    }
+    @media (min-width: 768px) { .step-connector { display: block; } }
+    .step-number {
+      position: relative; width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--maroon-800), var(--maroon-950));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold-300); font-family: var(--font-display);
+      font-size: 1.25rem; font-weight: 700; margin: 0 auto 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .step h3 { font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; color: var(--maroon-900); margin-bottom: 8px; }
+    .step p { color: #6b7280; font-size: 14px; line-height: 1.6; }
+
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-500); color: var(--maroon-950); font-weight: 700;
+      padding: 16px 32px; border-radius: 12px; font-size: 18px; transition: all 0.2s;
+    }
+    .btn-gold:hover { background: var(--gold-400); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+
+    /* ================================================================ */
+    /*  PORTFOLIO                                                       */
+    /* ================================================================ */
+    .portfolio-section { padding: 80px 0; background: var(--cream-100); }
+    .portfolio-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    }
+    @media (min-width: 768px) { .portfolio-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1024px) { .portfolio-grid { grid-template-columns: repeat(4, 1fr); } }
+    .gallery-item {
+      border-radius: 12px; overflow: hidden;
+      aspect-ratio: 1; box-shadow: 0 1px 3px rgba(0,0,0,0.05); cursor: pointer;
+    }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
+    .btn-outline-maroon {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid var(--maroon-800); color: var(--maroon-800);
+      font-weight: 600; padding: 14px 32px; border-radius: 12px; transition: all 0.2s;
+    }
+    .btn-outline-maroon:hover { background: var(--maroon-800); color: white; }
+
+    /* ================================================================ */
+    /*  TESTIMONIALS                                                    */
+    /* ================================================================ */
+    .testimonials-section { padding: 80px 0; }
+    .testimonial-wrapper { max-width: 1024px; margin: 0 auto; padding: 0 1rem; }
+    @media (min-width: 640px) { .testimonial-wrapper { padding: 0 1.5rem; } }
+    @media (min-width: 1024px) { .testimonial-wrapper { padding: 0 2rem; } }
+
+    .testimonial-card {
+      border-radius: 16px; padding: 32px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transition: all 0.5s;
+    }
+    @media (min-width: 768px) { .testimonial-card { padding: 48px; } }
+    .testimonial-inner { display: flex; flex-direction: column; gap: 24px; }
+    @media (min-width: 768px) { .testimonial-inner { flex-direction: row; align-items: flex-start; } }
+    .testimonial-avatar {
+      width: 64px; height: 64px; border-radius: 50%; object-fit: cover;
+      ring: 4px; outline: 4px solid var(--gold-200); flex-shrink: 0;
+    }
+    .testimonial-stars { display: flex; gap: 4px; margin-bottom: 12px; }
+    .testimonial-stars span { color: var(--gold-500); font-size: 18px; }
+    .testimonial-quote { color: #374151; font-size: 18px; font-style: italic; line-height: 1.7; margin-bottom: 20px; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-logo {
+      width: 40px; height: 40px; border-radius: 8px; background: var(--maroon-100);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--maroon-800); font-weight: 700; font-size: 14px;
+    }
+    .author-name { font-weight: 600; color: var(--maroon-900); }
+    .author-role { font-size: 14px; color: #6b7280; }
+
+    .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+    .carousel-dot {
+      border-radius: 9999px; transition: all 0.3s; background: var(--maroon-200);
+      width: 8px; height: 8px;
+    }
+    .carousel-dot.active { background: var(--maroon-800); width: 24px; }
+
+    /* Hide non-active testimonials */
+    .testimonial-slide { display: none; }
+    .testimonial-slide.active { display: block; }
+
+    /* ================================================================ */
+    /*  PRICING                                                         */
+    /* ================================================================ */
+    .pricing-section { padding: 80px 0; background: white; }
+    .pricing-grid {
+      display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 1024px; margin: 0 auto;
+    }
+    @media (min-width: 768px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .pricing-card {
+      border-radius: 16px; padding: 32px; border: 2px solid var(--cream-300);
+      background: white; position: relative;
+    }
+    .pricing-card.highlight {
+      border-color: var(--maroon-800); background: var(--maroon-800); color: white;
+      box-shadow: 0 25px 50px rgba(139,29,62,0.2);
+    }
+    .pricing-badge {
+      position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+      background: var(--gold-500); color: var(--maroon-950);
+      font-size: 12px; font-weight: 700; padding: 4px 16px; border-radius: 9999px;
+    }
+    .pricing-name { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+    .pricing-card:not(.highlight) .pricing-name { color: var(--gold-600); }
+    .pricing-card.highlight .pricing-name { color: var(--gold-300); }
+    .pricing-amount { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 4px; }
+    .pricing-amount .price {
+      font-family: var(--font-display); font-size: 3rem; font-weight: 700;
+    }
+    .pricing-card:not(.highlight) .price { color: var(--maroon-900); }
+    .pricing-amount .unit { font-size: 14px; margin-bottom: 8px; }
+    .pricing-card:not(.highlight) .unit { color: #6b7280; }
+    .pricing-card.highlight .unit { color: rgba(255,255,255,0.6); }
+    .pricing-range { font-size: 12px; font-weight: 500; margin-bottom: 24px; }
+    .pricing-card:not(.highlight) .pricing-range { color: #9ca3af; }
+    .pricing-card.highlight .pricing-range { color: rgba(255,255,255,0.6); }
+
+    .pricing-features { margin-bottom: 32px; }
+    .pricing-features li {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; padding: 6px 0;
+    }
+    .pricing-card:not(.highlight) .pricing-features li { color: #4b5563; }
+    .pricing-card.highlight .pricing-features li { color: rgba(255,255,255,0.8); }
+    .pricing-features .check { color: var(--gold-400); }
+
+    .pricing-btn {
+      display: block; width: 100%; text-align: center; font-weight: 600;
+      padding: 12px; border-radius: 12px; transition: all 0.2s;
+    }
+    .pricing-card:not(.highlight) .pricing-btn { background: var(--maroon-800); color: white; }
+    .pricing-card:not(.highlight) .pricing-btn:hover { background: var(--maroon-900); }
+    .pricing-card.highlight .pricing-btn { background: var(--gold-500); color: var(--maroon-950); }
+    .pricing-card.highlight .pricing-btn:hover { background: var(--gold-400); }
+
+    /* ================================================================ */
+    /*  CTA BANNER                                                      */
+    /* ================================================================ */
+    .cta-banner {
+      padding: 80px 0;
+      background: linear-gradient(to right, var(--maroon-900), var(--maroon-800));
+      color: white;
+    }
+    .cta-inner { max-width: 896px; margin: 0 auto; padding: 0 1rem; text-align: center; }
+    @media (min-width: 640px) { .cta-inner { padding: 0 1.5rem; } }
+    @media (min-width: 1024px) { .cta-inner { padding: 0 2rem; } }
+    .cta-banner h2 { font-family: var(--font-display); font-size: 2.25rem; font-weight: 700; margin-bottom: 20px; }
+    @media (min-width: 768px) { .cta-banner h2 { font-size: 3rem; } }
+    .cta-banner .cta-desc { color: rgba(255,255,255,0.7); font-size: 1.25rem; margin-bottom: 40px; }
+    .cta-buttons { display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+    @media (min-width: 640px) { .cta-buttons { flex-direction: row; } }
+    .btn-cta-gold {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--gold-500); color: var(--maroon-950); font-weight: 700;
+      padding: 16px 40px; border-radius: 12px; font-size: 18px; transition: all 0.2s;
+    }
+    .btn-cta-gold:hover { background: var(--gold-400); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+    .btn-cta-outline {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
+      color: white; font-weight: 600; padding: 16px 40px; border-radius: 12px;
+      font-size: 18px; transition: all 0.2s;
+    }
+    .btn-cta-outline:hover { background: rgba(255,255,255,0.2); }
+
+    /* ================================================================ */
+    /*  FOOTER                                                          */
+    /* ================================================================ */
+    .footer { background: var(--maroon-950); color: white; }
+
+    .newsletter {
+      background: linear-gradient(to right, var(--maroon-900), var(--maroon-800));
+      padding: 48px 0;
+    }
+    .newsletter-inner { max-width: 1280px; margin: 0 auto; padding: 0 1rem; text-align: center; }
+    @media (min-width: 640px) { .newsletter-inner { padding: 0 1.5rem; } }
+    @media (min-width: 1024px) { .newsletter-inner { padding: 0 2rem; } }
+    .newsletter h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: white; margin-bottom: 8px; }
+    .newsletter p { color: var(--maroon-200); margin-bottom: 24px; }
+    .newsletter-form {
+      display: flex; flex-direction: column; gap: 12px; max-width: 448px; margin: 0 auto;
+    }
+    @media (min-width: 640px) { .newsletter-form { flex-direction: row; } }
+    .newsletter-form input {
+      flex: 1; padding: 12px 16px; border-radius: 8px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: white; font-size: 14px;
+    }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.5); }
+    .newsletter-form button {
+      background: var(--gold-500); color: var(--maroon-950); font-weight: 700;
+      padding: 12px 24px; border-radius: 8px; font-size: 14px; transition: background 0.2s; white-space: nowrap;
+    }
+    .newsletter-form button:hover { background: var(--gold-400); }
+
+    .footer-main { padding: 56px 0; }
+    .footer-grid {
+      max-width: 1280px; margin: 0 auto; padding: 0 1rem;
+      display: grid; grid-template-columns: 1fr; gap: 40px;
+    }
+    @media (min-width: 640px) { .footer-grid { padding: 0 1.5rem; } }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .footer-grid { grid-template-columns: 1.2fr 1fr 1fr 1fr; padding: 0 2rem; } }
+
+    .footer-brand p { color: var(--maroon-200); font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-link {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); display: flex;
+      align-items: center; justify-content: center; transition: all 0.2s;
+      font-size: 12px; font-weight: 700; color: white;
+    }
+    .social-link:hover { background: var(--gold-500); color: var(--maroon-950); }
+
+    .footer-col h4 { font-weight: 600; color: white; margin-bottom: 16px; }
+    .footer-col li { padding: 4px 0; }
+    .footer-col a { color: var(--maroon-200); font-size: 14px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold-400); }
+
+    .contact-item { display: flex; align-items: flex-start; gap: 8px; color: var(--maroon-200); font-size: 14px; padding: 6px 0; }
+    .contact-icon { color: var(--gold-400); margin-top: 2px; }
+    .rush-badge {
+      margin-top: 20px; padding: 12px; border-radius: 8px;
+      background: rgba(20,83,45,0.3); border: 1px solid rgba(21,128,61,0.3);
+    }
+    .rush-inner { display: flex; align-items: center; gap: 8px; color: var(--forest-300); font-size: 12px; font-weight: 500; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 0;
+    }
+    .footer-bottom-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 1rem;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: space-between; gap: 12px; font-size: 12px; color: var(--maroon-400);
+    }
+    @media (min-width: 640px) {
+      .footer-bottom-inner { flex-direction: row; padding: 0 1.5rem; }
+    }
+    @media (min-width: 1024px) { .footer-bottom-inner { padding: 0 2rem; } }
+    .footer-legal { display: flex; gap: 16px; }
+    .footer-legal a { color: var(--maroon-400); transition: color 0.2s; }
+    .footer-legal a:hover { color: var(--gold-400); }
+
+    /* ===== Main flex grow ===== */
+    main { flex: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo-link">
+        <div class="logo-icon"><span>✦</span></div>
+        <div>
+          <div class="logo-text-main">StitchCraft</div>
+          <div class="logo-text-sub">Digitizing Studio</div>
+        </div>
+      </a>
+      <nav class="desktop-nav">
+        <a href="#" class="nav-link active">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a href="#" class="login-link">Client Login</a>
+        <a href="#pricing" class="order-btn">Order Now</a>
+      </div>
+      <button class="mobile-toggle" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Toggle menu">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobileNav" class="mobile-nav">
+      <a href="#">Home</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+      <div class="mobile-nav-divider">
+        <a href="#">Client Login</a>
+        <a href="#pricing" class="mobile-order-btn">Order Now →</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero hero-gradient">
+      <div class="hero-bg-img"></div>
+      <div class="hero-gradient-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-inner">
+          <span class="hero-badge">
+            <span class="pulse-dot"></span>
+            12–24 Hour Turnaround · Since 2010
+          </span>
+          <h1>
+            Embroidery
+            <span class="gold-shimmer" style="display:block;">Digitizing</span>
+            Perfected.
+          </h1>
+          <p class="hero-desc">
+            Transform any artwork into production-ready embroidery files. Professional quality,
+            lightning-fast delivery, and unmatched stitch accuracy trusted by 5,000+ brands worldwide.
+          </p>
+          <div class="hero-buttons">
+            <a href="#pricing" class="btn-primary btn-pulse">
+              Upload Your Design
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+              </svg>
+            </a>
+            <a href="#services" class="btn-secondary-hero">Request a Quote</a>
+          </div>
+        </div>
+      </div>
+      <div class="stats-bar">
+        <div class="stats-inner">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value">5,000+</div>
+              <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">50,000+</div>
+              <div class="stat-label">Designs Digitized</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">12hrs</div>
+              <div class="stat-label">Avg. Turnaround</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">99.8%</div>
+              <div class="stat-label">Satisfaction Rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">What We Offer</span>
+          <h2 class="section-title">Our Services</h2>
+          <div class="section-divider" style="margin-top:16px; margin-bottom:24px;"></div>
+          <p class="section-desc">From simple logos to complex artwork, we digitize everything with precision and care.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card card-hover">
+            <div class="service-icon">✦</div>
+            <h3>Logo Digitizing</h3>
+            <p>Clean, precise digitizing for corporate logos in all formats.</p>
+            <div class="service-footer">
+              <span class="service-price">From $10</span>
+              <a href="#" class="service-link">Learn more →</a>
+            </div>
+          </div>
+          <div class="service-card card-hover">
+            <div class="service-icon">◈</div>
+            <h3>Custom Artwork</h3>
+            <p>Complex designs, photo conversions, and original creations.</p>
+            <div class="service-footer">
+              <span class="service-price">From $25</span>
+              <a href="#" class="service-link">Learn more →</a>
+            </div>
+          </div>
+          <div class="service-card card-hover">
+            <div class="service-icon">⬡</div>
+            <h3>Patch Digitizing</h3>
+            <p>Specialized patch designs with borders and merone backgrounds.</p>
+            <div class="service-footer">
+              <span class="service-price">From $15</span>
+              <a href="#" class="service-link">Learn more →</a>
+            </div>
+          </div>
+          <div class="service-card card-hover">
+            <div class="service-icon">◉</div>
+            <h3>Cap Digitizing</h3>
+            <p>3D puff and flat embroidery optimized for headwear.</p>
+            <div class="service-footer">
+              <span class="service-price">From $12</span>
+              <a href="#" class="service-link">Learn more →</a>
+            </div>
+          </div>
+          <div class="service-card card-hover">
+            <div class="service-icon">◆</div>
+            <h3>Chest &amp; Back</h3>
+            <p>Left chest logos and large jacket back designs.</p>
+            <div class="service-footer">
+              <span class="service-price">From $10</span>
+              <a href="#" class="service-link">Learn more →</a>
+            </div>
+          </div>
+          <div class="service-card card-hover">
+            <div class="service-icon">◇</div>
+            <h3>Vector Art</h3>
+            <p>Vectorize raster images for best digitizing results.</p>
+            <div class="service-footer">
+              <span class="service-price">From $15</span>
+              <a href="#" class="service-link">Learn more →</a>
+            </div>
+          </div>
+        </div>
+        <div class="section-cta">
+          <a href="#pricing" class="btn-maroon">View All Services &amp; Pricing</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Simple Process</span>
+          <h2 class="section-title">How It Works</h2>
+          <div class="section-divider" style="margin-top:16px;"></div>
+        </div>
+        <div class="steps-grid">
+          <div class="step">
+            <div class="step-connector"></div>
+            <div class="step-number">01</div>
+            <h3>Upload Design</h3>
+            <p>Submit your artwork in AI, EPS, SVG, PDF, or high-res PNG via our order form.</p>
+          </div>
+          <div class="step">
+            <div class="step-connector"></div>
+            <div class="step-number">02</div>
+            <h3>We Digitize</h3>
+            <p>Our expert digitizers convert your artwork to professional embroidery files.</p>
+          </div>
+          <div class="step">
+            <div class="step-connector"></div>
+            <div class="step-number">03</div>
+            <h3>Approve &amp; Pay</h3>
+            <p>Review your digital proof, request any adjustments, then complete payment securely.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">04</div>
+            <h3>Download Files</h3>
+            <p>Receive production-ready DST, PES, and other format files in your dashboard.</p>
+          </div>
+        </div>
+        <div class="section-cta" style="margin-top:48px;">
+          <a href="#pricing" class="btn-gold">Start Your Order Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PORTFOLIO ===== -->
+    <section id="portfolio" class="portfolio-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Our Work</span>
+          <h2 class="section-title">Recent Projects</h2>
+          <div class="section-divider" style="margin-top:16px;"></div>
+        </div>
+        <div class="portfolio-grid">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=300&fit=crop" alt="Portfolio item 1" loading="lazy" />
+            <div class="overlay"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=300&fit=crop" alt="Portfolio item 2" loading="lazy" />
+            <div class="overlay"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&h=300&fit=crop" alt="Portfolio item 3" loading="lazy" />
+            <div class="overlay"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Portfolio item 4" loading="lazy" />
+            <div class="overlay"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop" alt="Portfolio item 5" loading="lazy" />
+            <div class="overlay"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&h=300&fit=crop" alt="Portfolio item 6" loading="lazy" />
+            <div class="overlay"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop" alt="Portfolio item 7" loading="lazy" />
+            <div class="overlay"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f43?w=400&h=300&fit=crop" alt="Portfolio item 8" loading="lazy" />
+            <div class="overlay"></div>
+          </div>
+        </div>
+        <div class="section-cta">
+          <a href="#" class="btn-outline-maroon">View Full Portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials" class="testimonials-section stitch-bg">
+      <div class="testimonial-wrapper">
+        <div class="section-header">
+          <span class="section-tag">What Clients Say</span>
+          <h2 class="section-title">Trusted by Thousands</h2>
+          <div class="section-divider" style="margin-top:16px;"></div>
+        </div>
+
+        <!-- Testimonial 1 -->
+        <div class="testimonial-slide active" data-index="0">
+          <div class="testimonial-card">
+            <div class="testimonial-inner">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="Sarah Mitchell" />
+              <div style="flex:1;">
+                <div class="testimonial-stars">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <blockquote class="testimonial-quote">
+                  "Absolutely stunning work! They digitized our company logo perfectly — every detail captured beautifully. Turnaround was faster than promised and quality exceeded expectations."
+                </blockquote>
+                <div class="testimonial-author">
+                  <div class="author-logo">M&C</div>
+                  <div>
+                    <div class="author-name">Sarah Mitchell</div>
+                    <div class="author-role">Owner, Mitchell &amp; Co Apparel</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-slide" data-index="1">
+          <div class="testimonial-card">
+            <div class="testimonial-inner">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="James Rodriguez" />
+              <div style="flex:1;">
+                <div class="testimonial-stars">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <blockquote class="testimonial-quote">
+                  "We've tried several digitizing services, but none compare. The stitch quality on our team jerseys was flawless. Bulk pricing saved us significantly and the files worked perfectly."
+                </blockquote>
+                <div class="testimonial-author">
+                  <div class="author-logo">ESG</div>
+                  <div>
+                    <div class="author-name">James Rodriguez</div>
+                    <div class="author-role">Marketing Director, Elite Sports Gear</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-slide" data-index="2">
+          <div class="testimonial-card">
+            <div class="testimonial-inner">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Emily Chen" />
+              <div style="flex:1;">
+                <div class="testimonial-stars">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <blockquote class="testimonial-quote">
+                  "The patch work they created for our seasonal collection was breathtaking. Clients keep asking where we get them done. Will definitely be ordering again for our next collection."
+                </blockquote>
+                <div class="testimonial-author">
+                  <div class="author-logo">BB</div>
+                  <div>
+                    <div class="author-name">Emily Chen</div>
+                    <div class="author-role">Creative Director, Bloom Boutique</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="testimonial-slide" data-index="3">
+          <div class="testimonial-card">
+            <div class="testimonial-inner">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Robert Kim" />
+              <div style="flex:1;">
+                <div class="testimonial-stars">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <blockquote class="testimonial-quote">
+                  "Fast, professional, and incredibly accurate. They handled complex vector designs with ease. The dashboard makes tracking orders so convenient. Highly recommend!"
+                </blockquote>
+                <div class="testimonial-author">
+                  <div class="author-logo">TW</div>
+                  <div>
+                    <div class="author-name">Robert Kim</div>
+                    <div class="author-role">Product Manager, TechWear Corp</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 5 -->
+        <div class="testimonial-slide" data-index="4">
+          <div class="testimonial-card">
+            <div class="testimonial-inner">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face" alt="Amanda Torres" />
+              <div style="flex:1;">
+                <div class="testimonial-stars">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <blockquote class="testimonial-quote">
+                  "We order in bulk monthly and the consistency is remarkable. Same quality every time. Their customer support is responsive and they always accommodate rush orders."
+                </blockquote>
+                <div class="testimonial-author">
+                  <div class="author-logo">US</div>
+                  <div>
+                    <div class="author-name">Amanda Torres</div>
+                    <div class="author-role">Procurement Head, Uniform Solutions</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-dots" id="carouselDots">
+          <button class="carousel-dot active" data-index="0"></button>
+          <button class="carousel-dot" data-index="1"></button>
+          <button class="carousel-dot" data-index="2"></button>
+          <button class="carousel-dot" data-index="3"></button>
+          <button class="carousel-dot" data-index="4"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section id="pricing" class="pricing-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Pricing</span>
+          <h2 class="section-title">Bulk Packages</h2>
+          <div class="section-divider" style="margin-top:16px; margin-bottom:16px;"></div>
+          <p class="section-desc">Save more when you order more. All packages include unlimited format files.</p>
+        </div>
+        <div class="pricing-grid">
+          <!-- Starter -->
+          <div class="pricing-card card-hover">
+            <div class="pricing-name">Starter</div>
+            <div class="pricing-amount">
+              <span class="price">$10</span>
+              <span class="unit">per design</span>
+            </div>
+            <div class="pricing-range">1–9 designs</div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> All standard formats</li>
+              <li><span class="check">✓</span> 2 free revisions</li>
+              <li><span class="check">✓</span> 24hr turnaround</li>
+              <li><span class="check">✓</span> Email support</li>
+            </ul>
+            <a href="#" class="pricing-btn">Get Started</a>
+          </div>
+          <!-- Business (Highlighted) -->
+          <div class="pricing-card card-hover highlight">
+            <div class="pricing-badge">MOST POPULAR</div>
+            <div class="pricing-name">Business</div>
+            <div class="pricing-amount">
+              <span class="price">$8</span>
+              <span class="unit">per design</span>
+            </div>
+            <div class="pricing-range">10–49 designs</div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> All standard formats</li>
+              <li><span class="check">✓</span> Unlimited revisions</li>
+              <li><span class="check">✓</span> 12hr turnaround</li>
+              <li><span class="check">✓</span> Priority support</li>
+              <li><span class="check">✓</span> 20% savings</li>
+            </ul>
+            <a href="#" class="pricing-btn">Get Started</a>
+          </div>
+          <!-- Enterprise -->
+          <div class="pricing-card card-hover">
+            <div class="pricing-name">Enterprise</div>
+            <div class="pricing-amount">
+              <span class="price">$6</span>
+              <span class="unit">per design</span>
+            </div>
+            <div class="pricing-range">50+ designs/month</div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> All standard formats</li>
+              <li><span class="check">✓</span> Unlimited revisions</li>
+              <li><span class="check">✓</span> Rush same-day service</li>
+              <li><span class="check">✓</span> Dedicated manager</li>
+              <li><span class="check">✓</span> 40% savings</li>
+            </ul>
+            <a href="#" class="pricing-btn">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA BANNER ===== -->
+    <section class="cta-banner">
+      <div class="cta-inner">
+        <h2>Ready to Get Started?</h2>
+        <p class="cta-desc">Upload your design now and receive professional embroidery files within 24 hours.</p>
+        <div class="cta-buttons">
+          <a href="#pricing" class="btn-cta-gold">Upload Your Design</a>
+          <a href="#contact" class="btn-cta-outline">Talk to an Expert</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="contact">
+    <!-- Newsletter -->
+    <div class="newsletter">
+      <div class="newsletter-inner">
+        <h3>Stay in the Loop</h3>
+        <p>Get tips, trends, and exclusive offers in your inbox.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault()">
+          <input type="email" placeholder="Your email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer columns -->
+    <div class="footer-main">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
+            <div style="width:36px; height:36px; border-radius:50%; background:var(--gold-500); display:flex; align-items:center; justify-content:center;">
+              <span style="color:var(--maroon-950); font-size:18px; font-weight:700;">✦</span>
+            </div>
+            <div>
+              <div style="font-family:var(--font-display); font-weight:700; color:white; font-size:18px; line-height:1;">StitchCraft</div>
+              <div style="font-size:11px; color:var(--gold-400); letter-spacing:0.1em; text-transform:uppercase;">Digitizing Studio</div>
+            </div>
+          </div>
+          <p>Professional embroidery digitizing since 2010. Trusted by 5,000+ brands worldwide.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">F</a>
+            <a href="#" class="social-link" aria-label="Instagram">I</a>
+            <a href="#" class="social-link" aria-label="Twitter">T</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">L</a>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Logo Digitizing</a></li>
+            <li><a href="#">Custom Embroidery</a></li>
+            <li><a href="#">Patch Digitizing</a></li>
+            <li><a href="#">Cap Digitizing</a></li>
+            <li><a href="#">Vector Art Services</a></li>
+            <li><a href="#">Bulk Orders</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#">Client Dashboard</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="contact-item">
+            <span class="contact-icon">✉</span>
+            <a href="mailto:orders@stitchcraft.com">orders@stitchcraft.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✆</span>
+            <a href="tel:+18005551234">+1 (800) 555-1234</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">◷</span>
+            <span>Mon–Fri: 9AM–6PM EST<br />Sat: 10AM–2PM EST</span>
+          </div>
+          <div class="rush-badge">
+            <div class="rush-inner">
+              <span class="pulse-dot"></span>
+              Rush orders available 24/7
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <span>&copy; 2026 StitchCraft Digitizing Studio. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== TESTIMONIAL CAROUSEL JS ===== -->
+  <script>
+    (function() {
+      var slides = document.querySelectorAll('.testimonial-slide');
+      var dots = document.querySelectorAll('.carousel-dot');
+      var active = 0;
+
+      function show(index) {
+        slides.forEach(function(s) { s.classList.remove('active'); });
+        dots.forEach(function(d) { d.classList.remove('active'); });
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        active = index;
+      }
+
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          show(parseInt(this.getAttribute('data-index')));
+        });
+      });
+
+      setInterval(function() {
+        show((active + 1) % slides.length);
+      }, 4500);
+    })();
+  </script>
+
+</body>
+</html>
+
